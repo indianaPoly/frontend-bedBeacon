@@ -7,6 +7,8 @@ export interface HospitalDataProp {
   distance: number;
   location: string;
   callNumber: string;
+  hospitalCode: string;
+  image: string;
 }
 
 export interface Position {
