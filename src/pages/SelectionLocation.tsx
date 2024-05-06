@@ -1,39 +1,38 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import districtsByCity from '../data/districtsByCity';
 
-const SelectCity = () => {
+const SelectionLocation = () => {
   const [city, setCity] = useState<string>();
   const [district, setDistrict] = useState<string>();
 
-  const handleCityChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedCity = event.target.value;
-    setCity(selectedCity);
-  };
+  const navigate = useNavigate();
 
-  const handleDistrictChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    if (city !== undefined) {
-      const selectedDistrict = event.target.value;
-      setDistrict(selectedDistrict);
-    } else {
-      setDistrict(undefined);
+  useEffect(() => {
+    if (
+      sessionStorage.getItem('latitude') !== null &&
+      sessionStorage.getItem('longitude') !== null
+    ) {
+      navigate('/result');
     }
-  };
-
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (city !== undefined && district !== undefined) {
-      localStorage.setItem('selectedCity', city);
-      localStorage.setItem('selectDistrict', district);
-    }
-    // localstorage로 이동하는 단계
-  };
+  });
 
   return (
     <div className="container mx-auto mt-8">
       <form
-        onSubmit={handleSubmit}
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (city !== undefined && district !== undefined) {
+            // eslint-disable-next-line array-callback-return
+            districtsByCity[0].seoul.map((item) => {
+              if (item.cityName === district) {
+                sessionStorage.setItem('latitude', String(item.latitude));
+                sessionStorage.setItem('longitude', String(item.longitude));
+              }
+            });
+            navigate('/result');
+          }
+        }}
         className="max-x-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
@@ -41,20 +40,30 @@ const SelectCity = () => {
             id="city"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-done focus:shadow-outline"
             value={city}
-            onChange={handleCityChange}
+            onChange={(event) => {
+              event.preventDefault();
+              const selectCity = event.target.value;
+              setCity(selectCity);
+              sessionStorage.setItem('city', selectCity);
+            }}
           >
             <option value="">시를 선택하세요</option>
-            <option value="0">서울특별시</option>
-            <option value="1">경기도</option>
-            <option value="2">인천광역시</option>
+            <option value="서울특별시">서울특별시</option>
           </select>
         </div>
+
+        {/* city가 선택이 안된 경우에 클릭이 안되도록 설정함. */}
         <div className="mb-6">
           <select
             id="district"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-done focus:shadow-outline"
             value={district}
-            onChange={handleDistrictChange}
+            onChange={(event) => {
+              event.preventDefault();
+              const selectDistrict = event.target.value;
+              setDistrict(selectDistrict);
+              sessionStorage.setItem('district', selectDistrict);
+            }}
           >
             <option value="">구/시를 선택하세요</option>
             {city &&
@@ -78,4 +87,4 @@ const SelectCity = () => {
   );
 };
 
-export default SelectCity;
+export default SelectionLocation;
