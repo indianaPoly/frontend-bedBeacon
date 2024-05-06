@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import Initial from './pages/Initial';
 import Result from './pages/Result';
 import getPermission from './util/getPermission';
-import SelectCity from './pages/SelectCity';
+import SelectionLocation from './pages/SelectionLocation';
 import Detail from './pages/Detail';
 
 const Router = () => {
@@ -20,9 +20,9 @@ const Router = () => {
   return (
     <Routes>
       <Route path="/" element={<Initial isPermission={locationPermission} />} />
-      <Route path="/select" element={<SelectCity />} />
+      <Route path="/select" element={<SelectionLocation />} />
       <Route path="/result" element={<Result />} />
-      <Route path="/detail" element={<Detail />} />
+      <Route path="/result/:hospitalCode" element={<Detail />} />
     </Routes>
   );
 };
