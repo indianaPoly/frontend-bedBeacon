@@ -6,6 +6,10 @@ const Initial = ({ isPermission }: { isPermission: boolean | null }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    saveOperatingSystemInformation();
+  }, []);
+
+  useEffect(() => {
     if (isPermission === true) {
       navigate('/result');
     }
@@ -13,10 +17,6 @@ const Initial = ({ isPermission }: { isPermission: boolean | null }) => {
       navigate('/select');
     }
   }, [isPermission, navigate]);
-
-  useEffect(() => {
-    saveOperatingSystemInformation();
-  });
 
   return (
     <div>
