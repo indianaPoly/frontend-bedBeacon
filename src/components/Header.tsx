@@ -13,7 +13,7 @@ const Header = () => {
             navigate('/result');
           }}
         >
-          <span className=" text-[18px] font-bold text-orange-700">
+          <span className=" text-[18px] font-bold text-[#4095BD]">
             Bed Beacon
           </span>
         </button>
