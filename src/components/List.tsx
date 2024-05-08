@@ -1,6 +1,10 @@
 import { useNavigate } from 'react-router-dom';
 import { HospitalDataProp } from '../types';
 
+interface ListDataProp extends HospitalDataProp {
+  pageType: string;
+}
+
 const HospitalNameContainer = ({ name }: { name: string }) => {
   return <span className=" text-[14px] font-[600]">{name}</span>;
 };
@@ -23,14 +27,23 @@ const HospitalRoomContaioner = ({
 const HospitalLocationAndDistanceContainer = ({
   distance,
   location,
+  pageType,
 }: {
   distance: number;
   location: string;
+  pageType: string;
 }) => {
   return (
     <div className="flex text-[12px] font-normal leading-[150%] text-[#8E9398] gap-[4px]">
-      <span>{distance}km</span>
-      <span> · </span>
+      {pageType === 'result' ? (
+        <>
+          <span>{distance}km</span>
+          <span> · </span>
+        </>
+      ) : (
+        ''
+      )}
+
       <span>{location}</span>
     </div>
   );
@@ -65,12 +78,13 @@ const List = ({
   location,
   callNumber,
   image,
-}: HospitalDataProp) => {
+  pageType,
+}: ListDataProp) => {
   const navigate = useNavigate();
   return (
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events, jsx-a11y/no-noninteractive-element-interactions
     <article
-      className=" cursor-pointer flex justify-between w-[340px] h-auto rounded-[16px] border border-[rgba(16, 17, 18, 0.10)] bg-white p-[15px] gap-[16px]"
+      className="cursor-pointer flex justify-between w-[340px] h-auto rounded-[16px] border border-[rgba(16, 17, 18, 0.10)] bg-white p-[15px] gap-[16px]"
       onClick={(event) => {
         event.preventDefault();
         navigate(`/result/${hospitalCode}`);
@@ -79,16 +93,17 @@ const List = ({
       <div>
         <HospitalNameContainer name={name} />
         <HospitalRoomContaioner
-          emergencyGeneralWard={emergencyGeneralWard}
-          generalWard={generalWard}
+          emergencyGeneralWard={emergencyGeneralWard as number}
+          generalWard={generalWard as number}
         />
         <HospitalLocationAndDistanceContainer
           location={location}
           distance={distance}
+          pageType={pageType}
         />
         <HosptialCallNumberContainer callNumber={callNumber} />
       </div>
-      <HospitalImageContainer image={image} />
+      <HospitalImageContainer image={image as string} />
     </article>
   );
 };
