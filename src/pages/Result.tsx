@@ -3,66 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout';
 import List from '../components/List';
 import distanceToFloor from '../util/distanceToFloor';
+import imageLoader from '../util/imageLoader';
 
 const Result = () => {
-  const dummy = [
-    {
-      id: 1,
-      name: '고려대학교 구로병원',
-      emergencyGeneralWard: 22,
-      generalWard: 364,
-      distance: 1300,
-      location: '서울특별시 구로구 구로동로',
-      callNumber: '02-2626-1114',
-      hospitalCode: '1',
-      image: '',
-    },
-    {
-      id: 2,
-      name: '고려대학교 구로병원',
-      emergencyGeneralWard: 22,
-      generalWard: 364,
-      distance: 7600,
-      location: '서울특별시 구로구 구로동로',
-      callNumber: '02-2626-1114',
-      hospitalCode: '2',
-      image: '',
-    },
-    {
-      id: 3,
-      name: '고려대학교 구로병원',
-      emergencyGeneralWard: 22,
-      generalWard: 364,
-      distance: 1331,
-      location: '서울특별시 구로구 구로동로',
-      callNumber: '02-2626-1114',
-      hospitalCode: '3',
-      image: '',
-    },
-    {
-      id: 4,
-      name: '고려대학교 구로병원',
-      emergencyGeneralWard: 22,
-      generalWard: 364,
-      distance: 500,
-      location: '서울특별시 구로구 구로동로',
-      callNumber: '02-2626-1114',
-      hospitalCode: '4',
-      image: '',
-    },
-    {
-      id: 5,
-      name: '고려대학교 구로병원',
-      emergencyGeneralWard: 22,
-      generalWard: 364,
-      distance: 100,
-      location: '서울특별시 구로구 구로동로',
-      callNumber: '02-2626-1114',
-      hospitalCode: '5',
-      image: '',
-    },
-  ];
-
   const [location, setLocation] = useState<string | null>();
 
   const navigate = useNavigate();
@@ -90,6 +33,59 @@ const Result = () => {
     }
   }, []);
 
+  const dummy = [
+    {
+      name: '고려대학교 구로병원',
+      emergencyGeneralWard: 22,
+      generalWard: 364,
+      distance: 1300,
+      location: '서울특별시 구로구 구로동로',
+      callNumber: '02-2626-1114',
+      hospitalCode: 'A1100014',
+    },
+    {
+      name: '고려대학교 구로병원',
+      emergencyGeneralWard: 22,
+      generalWard: 364,
+      distance: 7600,
+      location: '서울특별시 구로구 구로동로',
+      callNumber: '02-2626-1114',
+      hospitalCode: 'A1100014',
+    },
+    {
+      name: '고려대학교 구로병원',
+      emergencyGeneralWard: 22,
+      generalWard: 364,
+      distance: 1331,
+      location: '서울특별시 구로구 구로동로',
+      callNumber: '02-2626-1114',
+      hospitalCode: 'A1100014',
+    },
+    {
+      name: '고려대학교 구로병원',
+      emergencyGeneralWard: 22,
+      generalWard: 364,
+      distance: 500,
+      location: '서울특별시 구로구 구로동로',
+      callNumber: '02-2626-1114',
+      hospitalCode: 'A1100014',
+    },
+    {
+      name: '고려대학교 구로병원',
+      emergencyGeneralWard: 22,
+      generalWard: 364,
+      distance: 100,
+      location: '서울특별시 구로구 구로동로',
+      callNumber: '02-2626-1114',
+      hospitalCode: 'A1100014',
+    },
+  ];
+
+  const modifyDummy = dummy.map((item) => ({
+    ...item,
+    image: imageLoader(item.hospitalCode),
+  }));
+
   return (
     <Layout>
       <div className="desktop:w-[900px] gap-[15px] flex flex-col">
@@ -102,9 +98,9 @@ const Result = () => {
           </span>
         </div>
         <div className="grid place-items-center mobile:flex mobile:flex-col deskTop:grid deskTop:grid-cols-2 justify-center items-center gap-[20px]">
-          {dummy.map((item) => (
+          {modifyDummy.map((item) => (
             <List
-              key={item.id}
+              key={item.hospitalCode}
               name={item.name}
               emergencyGeneralWard={item.emergencyGeneralWard}
               generalWard={item.generalWard}
@@ -113,6 +109,7 @@ const Result = () => {
               callNumber={item.callNumber}
               hospitalCode={item.hospitalCode}
               image={item.image}
+              pageType="result"
             />
           ))}
         </div>
