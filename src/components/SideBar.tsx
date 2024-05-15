@@ -1,5 +1,3 @@
-// 해야할것 동적 링크 할당
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import xIcon from '../assets/icons/ic_x_line.svg';
@@ -17,7 +15,7 @@ const SideBar = ({
 
   return (
     <div
-      className={`absolute h-[250px] w-full bg-white top-0 flex justify-center items-center ${
+      className={`absolute mobile:h-[200px] h-[250px] w-full bg-white top-0 flex justify-center items-center ${
         // eslint-disable-next-line no-nested-ternary
         onClickMenu && !isAnimate
           ? 'animate-slideDown'
@@ -54,6 +52,10 @@ const SideBar = ({
           <button
             type="button"
             className="text-[18px] font-bold text-[#4095BD]"
+            onClick={(e) => {
+              e.preventDefault();
+              navigate('/setting');
+            }}
           >
             설정
           </button>
