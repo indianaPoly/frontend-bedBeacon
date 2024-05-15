@@ -63,8 +63,12 @@ const HosptialCallNumberContainer = ({
 
 const HospitalImageContainer = ({ image }: { image: string }) => {
   return (
-    <div className=" bg-slate-400 w-[102px] h-auto rounded-[16px] flex justify-center items-center">
-      <img alt="이미지 없음" src={image} />
+    <div className=" bg-slate-400 w-[102px] h-[102px] rounded-[16px] flex justify-center items-center">
+      <img
+        className=" w-full h-full rounded-[16px]"
+        alt="이미지 없음"
+        src={image}
+      />
     </div>
   );
 };
