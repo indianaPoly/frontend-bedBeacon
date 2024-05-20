@@ -23,7 +23,7 @@ const surgeryName = (surgeryCode: string) => {
     case 'MKioskTy11':
       return '성인 위장관';
     case 'MKioskTy12':
-      return '영유가 위장관';
+      return '영유아 위장관';
     case 'MKioskTy13':
       return '성인 기관지';
     case 'MKioskTy14':
