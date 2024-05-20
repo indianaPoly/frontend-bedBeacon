@@ -18,7 +18,10 @@ const SelectionLocation = () => {
   });
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="mx-auto mt-8 flex flex-col justify-center items-center gap-[20px]">
+      <span className="text-[13px] font-bold text-[#4095BD]">
+        지역을 선택한 후 확인을 눌러보세요!
+      </span>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -33,7 +36,7 @@ const SelectionLocation = () => {
             navigate('/result');
           }
         }}
-        className="max-x-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="w-[300px] mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
       >
         <div className="mb-4">
           <select
@@ -52,7 +55,6 @@ const SelectionLocation = () => {
           </select>
         </div>
 
-        {/* city가 선택이 안된 경우에 클릭이 안되도록 설정함. */}
         <div className="mb-6">
           <select
             id="district"
@@ -74,15 +76,18 @@ const SelectionLocation = () => {
               ))}
           </select>
         </div>
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-center">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-[#4095BD] hover:opacity-75 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
             type="submit"
           >
             저장
           </button>
         </div>
       </form>
+      <span className="text-[12px] font-bold text-gray-400">
+        현재 버전은 서울특별시를 기준으로 개발되었습니다.
+      </span>
     </div>
   );
 };

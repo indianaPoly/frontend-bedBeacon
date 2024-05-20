@@ -1,9 +1,11 @@
-import Layout from '../components/Layout';
+import Layout from '../components/Layout/Layout';
 
 const Setting = () => {
   return (
     <Layout>
-      <div>세팅하는 페이지임</div>
+      <span className=" block text-[13px] font-bold text-[#4095BD]">
+        서비스 준비중이에요.
+      </span>
     </Layout>
   );
 };

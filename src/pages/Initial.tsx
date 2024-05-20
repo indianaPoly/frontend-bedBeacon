@@ -1,15 +1,13 @@
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import saveOperatingSystemInformation from '../util/saveOperatingSystemInfomation';
+import bedBeacon from '../assets/main/bedBeaconLogo.webp';
 
 const Initial = ({ isPermission }: { isPermission: boolean | null }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     saveOperatingSystemInformation();
-  }, []);
-
-  useEffect(() => {
     if (isPermission === true) {
       navigate('/result');
     }
@@ -19,8 +17,8 @@ const Initial = ({ isPermission }: { isPermission: boolean | null }) => {
   }, [isPermission, navigate]);
 
   return (
-    <div>
-      <span className=" text-[200px]">초기 화면임</span>
+    <div className=" w-full h-screen items-center flex justify-evenly">
+      <img className="w-full" src={bedBeacon} alt="bedBeacon" />
     </div>
   );
 };
