@@ -5,10 +5,11 @@ import RoomList from '../components/List/RoomList';
 import FeasibleList from '../components/List/FeasibleList';
 import surgeryName from '../util/surgeryName';
 import useGetHospitalDetail from '../hooks/useGetHospitalDetail';
-import Loading from './Loading';
+import Loading from './common/Loading';
 import Layout from '../components/Layout/Layout';
 import { RoomUnit } from '../types/components';
 import { HospitalEmerMedAvailableItem } from '../types/api';
+import ErrorPage from './common/ErrorPage';
 
 const HospitalRoom = ({
   hospitalRoomData,
@@ -64,7 +65,7 @@ const Detail = () => {
     'hospitalRoom' | 'medicalFeasibilityIndex'
   >('hospitalRoom');
 
-  const { data, isLoading, error } = useGetHospitalDetail(
+  const { data, isLoading, isError } = useGetHospitalDetail(
     sessionStorage.getItem('latitude') as string,
     sessionStorage.getItem('longitude') as string,
     params.hospitalCode as string
@@ -73,7 +74,7 @@ const Detail = () => {
   return (
     <Layout>
       {isLoading && <Loading />}
-      {error && <div>에러남</div>}
+      {isError && <ErrorPage />}
       {data && (
         <div className="flex flex-col gap-[20px] mobile:mt-[25px]">
           <div className="flex mobile:flex-col mobile:items-center justify-center deskTop:gap-[100px] mobile:gap-[30px]">

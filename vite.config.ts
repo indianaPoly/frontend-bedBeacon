@@ -13,6 +13,13 @@ export default defineConfig({
         secure: false,
         ws: true,
       },
+      '/chatbot': {
+        target: 'http://203.253.21.194:8000/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/chatbot/, ''),
+        secure: false,
+        ws: true,
+      },
     },
   },
 });

@@ -1,18 +1,20 @@
 import { Link } from 'react-router-dom';
 import useGetHospitals from '../hooks/useGetHospitals';
 import imageLoader from '../util/imageLoader';
-import Loading from './Loading';
+import Loading from './common/Loading';
 import Layout from '../components/Layout/Layout';
 import List from '../components/List/List';
+import ErrorPage from './common/ErrorPage';
 
 const Hospitals = () => {
-  const { data, isLoading } = useGetHospitals(
+  const { data, isLoading, isError } = useGetHospitals(
     sessionStorage.getItem('latitude') as string,
     sessionStorage.getItem('longitude') as string
   );
 
   return (
     <Layout>
+      {isError && <ErrorPage />}
       {isLoading && <Loading />}
       {data && (
         <div className="grid place-items-center mobile:flex mobile:flex-col deskTop:grid deskTop:grid-cols-2 justify-center items-center gap-[20px]">

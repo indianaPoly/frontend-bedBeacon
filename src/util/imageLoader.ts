@@ -1,22 +1,22 @@
 import A1100001 from '../assets/hospitalImage/A1100001.jpeg';
 import A1100002 from '../assets/hospitalImage/A1100002.jpeg';
-import A1100003 from '../assets/hospitalImage/A1100003.jpeg';
-import A1100004 from '../assets/hospitalImage/A1100004.jpeg';
-import A1100005 from '../assets/hospitalImage/A1100005.jpeg';
-import A1100006 from '../assets/hospitalImage/A1100006.jpeg';
-import A1100007 from '../assets/hospitalImage/A1100007.jpeg';
-import A1100008 from '../assets/hospitalImage/A1100008.jpeg';
-import A1100009 from '../assets/hospitalImage/A1100009.jpeg';
-import A1100010 from '../assets/hospitalImage/A1100010.jpeg';
+import A1100003 from '../assets/hospitalImage/A1100003.jpg';
+import A1100004 from '../assets/hospitalImage/A1100004.jpg';
+import A1100005 from '../assets/hospitalImage/A1100005.jpg';
+import A1100006 from '../assets/hospitalImage/A1100006.jpg';
+import A1100007 from '../assets/hospitalImage/A1100007.jpg';
+import A1100008 from '../assets/hospitalImage/A1100008.jpg';
+import A1100009 from '../assets/hospitalImage/A1100009.png';
+import A1100010 from '../assets/hospitalImage/A1100010.jpg';
 import A1100011 from '../assets/hospitalImage/A1100011.jpeg';
-import A1100012 from '../assets/hospitalImage/A1100012.jpeg';
+import A1100012 from '../assets/hospitalImage/A1100012.png';
 import A1100013 from '../assets/hospitalImage/A1100013.jpeg';
 import A1100014 from '../assets/hospitalImage/A1100014.jpeg';
 import A1100015 from '../assets/hospitalImage/A1100015.jpeg';
 import A1100016 from '../assets/hospitalImage/A1100016.jpeg';
 import A1100017 from '../assets/hospitalImage/A1100017.jpeg';
 import A1100019 from '../assets/hospitalImage/A1100019.jpeg';
-import A1100021 from '../assets/hospitalImage/A1100021.jpeg';
+import A1100021 from '../assets/hospitalImage/A1100021.png';
 
 const imageLoader = (hospitalCode: string) => {
   switch (hospitalCode) {

@@ -14,9 +14,13 @@ const Router = () => {
   );
 
   useEffect(() => {
-    getPermission().then((isPermission) => {
-      setLocationPermission(isPermission);
-    });
+    getPermission()
+      .then((isPermission) => {
+        setLocationPermission(isPermission);
+      })
+      .catch(() => {
+        setLocationPermission(false);
+      });
   }, []);
 
   return (

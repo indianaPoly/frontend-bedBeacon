@@ -17,8 +17,19 @@ const Initial = ({ isPermission }: { isPermission: boolean | null }) => {
   }, [isPermission, navigate]);
 
   return (
-    <div className=" w-full h-screen items-center flex justify-evenly">
-      <img className="w-full" src={bedBeacon} alt="bedBeacon" />
+    <div className="flex flex-col w-full justify-center items-center gap-[30px] mt-[40px]">
+      <img
+        className="w-[300px] h-[300px] rounded-xl"
+        src={bedBeacon}
+        alt="bedBeacon"
+      />
+      <div className="flex flex-col w-[340px] text-[18px] font-semibold justify-center items-center gap-[10px]">
+        <span>허용하여 주변 병원을 확인하세요.</span>
+        <span>거절시 지역 선택 페이지로 넘어가요.</span>
+        <span className=" text-[15px] text-[#4095BD] font-bold">
+          해당 정보는 병원 검색 용도외에 절대 사용하지 않아요.
+        </span>
+      </div>
     </div>
   );
 };

@@ -4,12 +4,12 @@ import imageLoader from '../util/imageLoader';
 import chatbotIcon from '../assets/chatbot/chatbot.png';
 import Chatbot from '../components/chatbot/Chatbot';
 import useGetHospitalsAround from '../hooks/useGetHospitalsAround';
-import Loading from './Loading';
+import Loading from './common/Loading';
 import List from '../components/List/List';
 import Layout from '../components/Layout/Layout';
+import ErrorPage from './common/ErrorPage';
 
 const Result = () => {
-  const [location, setLocation] = useState<string | null>();
   const [showChatbot, setShowChatbot] = useState(false);
 
   const navigate = useNavigate();
@@ -23,20 +23,7 @@ const Result = () => {
     }
   }, [navigate]);
 
-  useEffect(() => {
-    if (
-      sessionStorage.getItem('district') !== null &&
-      sessionStorage.getItem('city') !== null
-    ) {
-      setLocation(
-        `${sessionStorage.getItem('city') as string} ${sessionStorage.getItem(
-          'district'
-        )}`
-      );
-    }
-  }, []);
-
-  const { data, isLoading } = useGetHospitalsAround(
+  const { data, isLoading, isError } = useGetHospitalsAround(
     sessionStorage.getItem('latitude') as string,
     sessionStorage.getItem('longitude') as string
   );
@@ -71,7 +58,7 @@ const Result = () => {
           {data && (
             <>
               <span className="text-[12px] font-bold text-[#4095BD]">
-                {location || data.getLocation}
+                {data.getLocation}
               </span>
               <span className="text-[12px] font-normal text-gray-500">
                 주변의 대학병원을 알려드릴게요.
@@ -80,6 +67,7 @@ const Result = () => {
           )}
         </div>
         {isLoading && <Loading />}
+        {isError && <ErrorPage />}
         {data && (
           <div className="grid place-items-center mobile:flex mobile:flex-col deskTop:grid deskTop:grid-cols-2 justify-center items-center gap-[20px]">
             {data.hospitalAruondResponse.data.result.hospitalList.map(

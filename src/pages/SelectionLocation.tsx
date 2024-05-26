@@ -18,7 +18,7 @@ const SelectionLocation = () => {
   });
 
   return (
-    <div className="mx-auto mt-8 flex flex-col justify-center items-center gap-[20px]">
+    <div className="mx-auto flex flex-col justify-center items-center gap-[20px] mt-[150px]">
       <span className="text-[13px] font-bold text-[#4095BD]">
         지역을 선택한 후 확인을 눌러보세요!
       </span>
