@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/api/*"
+  to = "http://13.209.249.132/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/chatbot/*"
+  to = "http://203.253.21.194:8000/:splat"
+  status = 200
+  force = true
