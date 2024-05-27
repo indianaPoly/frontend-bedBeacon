@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import districtsByCity from '../data/districtsByCity';
+import PageViewTrigger from '../util/gtag';
 
 const SelectionLocation = () => {
   const [city, setCity] = useState<string>();
@@ -10,6 +11,7 @@ const SelectionLocation = () => {
 
   useEffect(() => {
     document.title = '지역 선택 페이지';
+    PageViewTrigger();
   }, []);
 
   useEffect(() => {

@@ -2,12 +2,14 @@ import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import saveOperatingSystemInformation from '../util/saveOperatingSystemInfomation';
 import bedBeacon from '../assets/main/bedBeaconLogo.webp';
+import PageViewTrigger from '../util/gtag';
 
 const Initial = ({ isPermission }: { isPermission: boolean | null }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = '초기 페이지';
+    PageViewTrigger();
   }, []);
 
   useEffect(() => {

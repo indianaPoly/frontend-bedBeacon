@@ -8,6 +8,7 @@ import Loading from './common/Loading';
 import List from '../components/List/List';
 import Layout from '../components/Layout/Layout';
 import ErrorPage from './common/ErrorPage';
+import PageViewTrigger from '../util/gtag';
 
 const Result = () => {
   const [showChatbot, setShowChatbot] = useState(false);
@@ -16,6 +17,7 @@ const Result = () => {
 
   useEffect(() => {
     document.title = '주변 병원 페이지';
+    PageViewTrigger();
   }, []);
 
   useEffect(() => {
