@@ -14,7 +14,7 @@ const HospitalList = () => {
   const costInfoRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    fetch('src/data/chatbot/hospitals.json')
+    fetch('/hospitals.json')
       .then((response) => response.json())
       .then((data) => {
         setHospitals(data.hospitals);
