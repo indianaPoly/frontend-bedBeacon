@@ -1,4 +1,4 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import imageLoader from '../util/imageLoader';
 import RoomList from '../components/List/RoomList';
@@ -10,6 +10,7 @@ import Layout from '../components/Layout/Layout';
 import { RoomUnit } from '../types/components';
 import { HospitalEmerMedAvailableItem } from '../types/api';
 import ErrorPage from './common/ErrorPage';
+import PageViewTrigger from '../util/gtag';
 
 const HospitalRoom = ({
   hospitalRoomData,
@@ -70,6 +71,10 @@ const Detail = () => {
     sessionStorage.getItem('longitude') as string,
     params.hospitalCode as string
   );
+
+  useEffect(() => {
+    PageViewTrigger(window.location.pathname);
+  }, []);
 
   return (
     <Layout>

@@ -1,16 +1,22 @@
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 import useGetHospitals from '../hooks/useGetHospitals';
 import imageLoader from '../util/imageLoader';
 import Loading from './common/Loading';
 import Layout from '../components/Layout/Layout';
 import List from '../components/List/List';
 import ErrorPage from './common/ErrorPage';
+import PageViewTrigger from '../util/gtag';
 
 const Hospitals = () => {
   const { data, isLoading, isError } = useGetHospitals(
     sessionStorage.getItem('latitude') as string,
     sessionStorage.getItem('longitude') as string
   );
+
+  useEffect(() => {
+    PageViewTrigger(window.location.pathname);
+  }, []);
 
   return (
     <Layout>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import districtsByCity from '../data/districtsByCity';
+import PageViewTrigger from '../util/gtag';
 
 const SelectionLocation = () => {
   const [city, setCity] = useState<string>();
@@ -16,6 +17,10 @@ const SelectionLocation = () => {
       navigate('/result');
     }
   });
+
+  useEffect(() => {
+    PageViewTrigger(window.location.pathname);
+  }, []);
 
   return (
     <div className="mx-auto flex flex-col justify-center items-center gap-[20px] mt-[150px]">
