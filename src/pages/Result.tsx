@@ -57,7 +57,7 @@ const Result = () => {
           </div>
         )}
       </div>
-      <div className="desktop:w-[900px] gap-[15px] flex flex-col">
+      <div className="desktop:w-[900px] gap-[15px] flex flex-col items-center">
         <div className=" w-full flex justify-center items-center gap-[3px]">
           {data && (
             <>
@@ -95,6 +95,13 @@ const Result = () => {
             )}
           </div>
         )}
+        {data &&
+          data.hospitalAruondResponse.data.result.totalElements === 0 && (
+            <span className=" w-fit text-center text-[14px] font-bold text-red-400">
+              주변에 대학병원이 없어요. <br />
+              추후 업데이트가 될거에요.
+            </span>
+          )}
       </div>
     </Layout>
   );
