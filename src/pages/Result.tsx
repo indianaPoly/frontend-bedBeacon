@@ -32,6 +32,10 @@ const Result = () => {
     setShowChatbot((prevState) => !prevState);
   };
 
+  const location = `${sessionStorage.getItem('city')} ${sessionStorage.getItem(
+    'district'
+  )}`;
+
   return (
     <Layout>
       <div className="desktop:w-[900px] gap-[15px] flex flex-col relative">
@@ -58,7 +62,9 @@ const Result = () => {
           {data && (
             <>
               <span className="text-[12px] font-bold text-[#4095BD]">
-                {data.getLocation}
+                {sessionStorage.getItem('district2') !== ''
+                  ? data.getLocation
+                  : location}
               </span>
               <span className="text-[12px] font-normal text-gray-500">
                 주변의 대학병원을 알려드릴게요.

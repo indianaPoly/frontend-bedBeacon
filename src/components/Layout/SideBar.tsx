@@ -54,10 +54,12 @@ const SideBar = ({
             className="text-[18px] font-bold text-[#4095BD]"
             onClick={(e) => {
               e.preventDefault();
-              navigate('/setting');
+              sessionStorage.removeItem('latitude');
+              sessionStorage.removeItem('longitude');
+              navigate('/select');
             }}
           >
-            설정
+            다른 지역 병원보기
           </button>
         </div>
       </div>

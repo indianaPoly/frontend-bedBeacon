@@ -3,9 +3,8 @@ import getHospitalsAround from '../api/product/getHospitalsAround';
 import getLocationName from '../api/public/getLocationName';
 
 const useGetHospitalsAround = (latitude: string, longitude: string) => {
-  const STALETIME = 1000 * 60 * 5;
   return useQuery({
-    queryKey: ['getHospitalsAround'],
+    queryKey: ['getHospitalsAround', latitude, longitude],
     // eslint-disable-next-line consistent-return
     queryFn: async () => {
       try {
@@ -22,7 +21,6 @@ const useGetHospitalsAround = (latitude: string, longitude: string) => {
         return null;
       }
     },
-    staleTime: STALETIME,
   });
 };
 

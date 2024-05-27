@@ -18,7 +18,7 @@ const getLocationName = async (latitude: string, longitude: string) => {
     address.suburb || address.city_district || address.county || '';
 
   sessionStorage.setItem('city', city);
-  sessionStorage.setItem('district', district);
+  sessionStorage.setItem('district2', district);
 
   return `${city} ${district}`;
 };
