@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import districtsByCity from '../data/districtsByCity';
-import PageViewTrigger from '../util/gtag';
 
 const SelectionLocation = () => {
   const [city, setCity] = useState<string>();
   const [district, setDistrict] = useState<string>();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = '지역 선택 페이지';
+  }, []);
 
   useEffect(() => {
     if (
@@ -17,10 +20,6 @@ const SelectionLocation = () => {
       navigate('/result');
     }
   });
-
-  useEffect(() => {
-    PageViewTrigger();
-  }, []);
 
   return (
     <div className="mx-auto flex flex-col justify-center items-center gap-[20px] mt-[150px]">

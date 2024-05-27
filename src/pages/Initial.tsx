@@ -7,6 +7,10 @@ const Initial = ({ isPermission }: { isPermission: boolean | null }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = '초기 페이지';
+  }, []);
+
+  useEffect(() => {
     saveOperatingSystemInformation();
     if (isPermission === true) {
       navigate('/result');

@@ -15,6 +15,7 @@ const Hospitals = () => {
   );
 
   useEffect(() => {
+    document.title = '병원 전체 페이지';
     PageViewTrigger();
   }, []);
 

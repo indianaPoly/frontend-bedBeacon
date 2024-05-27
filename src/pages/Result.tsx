@@ -8,12 +8,15 @@ import Loading from './common/Loading';
 import List from '../components/List/List';
 import Layout from '../components/Layout/Layout';
 import ErrorPage from './common/ErrorPage';
-import PageViewTrigger from '../util/gtag';
 
 const Result = () => {
   const [showChatbot, setShowChatbot] = useState(false);
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.title = '주변 병원 페이지';
+  }, []);
 
   useEffect(() => {
     if (
@@ -23,10 +26,6 @@ const Result = () => {
       navigate('/select');
     }
   }, [navigate]);
-
-  useEffect(() => {
-    PageViewTrigger();
-  }, []);
 
   const { data, isLoading, isError } = useGetHospitalsAround(
     sessionStorage.getItem('latitude') as string,

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import Initial from './pages/Initial';
 import Result from './pages/Result';
@@ -6,6 +6,17 @@ import getPermission from './util/getPermission';
 import SelectionLocation from './pages/SelectionLocation';
 import Detail from './pages/Detail';
 import Hospitals from './pages/Hospitals';
+import PageViewTrigger from './util/gtag';
+
+const PageViews = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    PageViewTrigger();
+  }, [location]);
+
+  return null;
+};
 
 const Router = () => {
   const [locationPermission, setLocationPermission] = useState<boolean | null>(
@@ -24,6 +35,7 @@ const Router = () => {
 
   return (
     <Routes>
+      <PageViews />
       <Route path="/" element={<Initial isPermission={locationPermission} />} />
       <Route path="/select" element={<SelectionLocation />} />
       <Route path="/result" element={<Result />} />
