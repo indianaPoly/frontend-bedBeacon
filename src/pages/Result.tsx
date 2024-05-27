@@ -25,7 +25,7 @@ const Result = () => {
   }, [navigate]);
 
   useEffect(() => {
-    PageViewTrigger(window.location.pathname);
+    PageViewTrigger();
   }, []);
 
   const { data, isLoading, isError } = useGetHospitalsAround(

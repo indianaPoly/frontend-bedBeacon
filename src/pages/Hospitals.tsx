@@ -15,7 +15,7 @@ const Hospitals = () => {
   );
 
   useEffect(() => {
-    PageViewTrigger(window.location.pathname);
+    PageViewTrigger();
   }, []);
 
   return (

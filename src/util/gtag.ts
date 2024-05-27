@@ -1,9 +1,10 @@
 import ReactGA from 'react-ga4';
 
-const PageViewTrigger = (pathname: string) => {
+const PageViewTrigger = () => {
   ReactGA.send({
     hitType: 'pageview',
-    page: pathname,
+    page_location: window.location.href,
+    page_path: window.location.pathname,
   });
 };
 

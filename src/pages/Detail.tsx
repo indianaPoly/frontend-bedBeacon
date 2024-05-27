@@ -73,7 +73,7 @@ const Detail = () => {
   );
 
   useEffect(() => {
-    PageViewTrigger(window.location.pathname);
+    PageViewTrigger();
   }, []);
 
   return (

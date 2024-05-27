@@ -19,7 +19,7 @@ const SelectionLocation = () => {
   });
 
   useEffect(() => {
-    PageViewTrigger(window.location.pathname);
+    PageViewTrigger();
   }, []);
 
   return (
