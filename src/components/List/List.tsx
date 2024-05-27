@@ -73,7 +73,7 @@ const List = ({
   image,
 }: HospitalListDataProp) => {
   return (
-    <article className="cursor-pointer flex justify-between w-[350px] h-[170px] items-center rounded-[16px] border border-[rgba(16, 17, 18, 0.10)] bg-white p-[15px] gap-[19px]">
+    <article className="cursor-pointer flex justify-between w-[350px] h-[180px] items-center rounded-[16px] border border-[rgba(16, 17, 18, 0.10)] bg-white p-[15px] gap-[19px]">
       <div className="flex flex-col items-start gap-[2px]">
         <HospitalNameContainer name={name} />
 
