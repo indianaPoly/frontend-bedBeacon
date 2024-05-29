@@ -15,7 +15,7 @@ const SideBar = ({
 
   return (
     <div
-      className={`absolute mobile:h-[200px] h-[250px] w-full bg-white top-0 flex justify-center items-center ${
+      className={`absolute mobile:h-[250px] h-[275px] w-full bg-white top-0 flex justify-center items-center ${
         // eslint-disable-next-line no-nested-ternary
         onClickMenu && !isAnimate
           ? 'animate-slideDown'
@@ -34,7 +34,7 @@ const SideBar = ({
             }, 750);
           }}
           type="button"
-          className=" absolute top-6 right-6"
+          className=" absolute top-7 right-7 mobile:top-5 mobile:right-5"
         >
           <img alt="xicon" src={xIcon} />
         </button>
@@ -60,6 +60,18 @@ const SideBar = ({
             }}
           >
             다른 지역 병원보기
+          </button>
+          <button
+            type="button"
+            className="text-[18px] font-bold text-[#4095BD]"
+            onClick={(e) => {
+              e.preventDefault();
+              window.open(
+                'https://docs.google.com/forms/d/e/1FAIpQLSejRophAV5IGnOkzTLMdRLe2wDJ2hdMOmwL3oc6mlFQCWR0ag/viewform?usp=sf_link'
+              );
+            }}
+          >
+            피드백 보내기
           </button>
         </div>
       </div>
