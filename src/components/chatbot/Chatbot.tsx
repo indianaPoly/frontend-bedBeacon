@@ -20,6 +20,7 @@ const Chatbot = () => {
   const [question, setQuestion] = useState<boolean>(false);
   const [loading2, setLoading2] = useState<boolean>(false);
   const [responses, setResponses] = useState<string[]>([]);
+  const [disable, setDisable] = useState(true);
   const showHospitalListRef = useRef<HTMLDivElement>(null);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -47,6 +48,7 @@ const Chatbot = () => {
       setTimeout(() => {
         setLoading(false);
         setShowURL(true);
+        setDisable(true);
       }, 2000);
     } else if (buttonText === 'Button 2') {
       setUserComment2(true);
@@ -54,6 +56,7 @@ const Chatbot = () => {
       setTimeout(() => {
         setLoading(false);
         setShowHospitalList(true);
+        setDisable(true);
       }, 2000);
     } else if (buttonText === 'Button 3') {
       setUserComment3(true);
@@ -61,6 +64,7 @@ const Chatbot = () => {
       setTimeout(() => {
         setLoading(false);
         setStartConsult(true);
+        setDisable(false);
       }, 2000);
     }
   };
@@ -68,6 +72,7 @@ const Chatbot = () => {
   const handleButtonClick2 = (buttonText: string) => {
     clearResponses();
     setShowButtons2(false);
+    setDisable(true);
     if (buttonText === 'Button 1') {
       setUserComment1(true);
       setLoading(true);
@@ -88,13 +93,13 @@ const Chatbot = () => {
       setTimeout(() => {
         setLoading(false);
         setStartConsult(true);
+        setDisable(false);
       }, 2000);
     }
   };
 
   const handleSend = async () => {
-    if (inputMessage.trim() === '') return;
-
+    if (inputMessage.trim() === '' || disable) return;
     setLoading2(true);
     setQuestion(true);
     setSentMessage(inputMessage);
@@ -113,6 +118,7 @@ const Chatbot = () => {
     } finally {
       setLoading2(false);
       setShowButtons2(true);
+      setDisable(true);
     }
   };
 
@@ -220,28 +226,34 @@ const Chatbot = () => {
         </div>
       )}
 
-      {question && (
-        <div className="text-white text-right font-semibold text-[13px] bg-blue-500 border border-gray-300 rounded-3xl shadow-lg p-4 py-2 ml-32 animate-bounce max-w-xl float-right">
-          {sentMessage}
-        </div>
-      )}
+      <div className="flex flex-col">
+        {question && (
+          <div>
+            <div className="text-white font-semibold text-[13px] bg-blue-500 border border-gray-300 rounded-3xl shadow-lg p-4 py-2 ml-32 animate-bounce max-w-[230px] float-right">
+              {sentMessage}
+            </div>
+          </div>
+        )}
 
-      {loading2 && (
-        <div className="text-white font-semibold text-[13px] bg-neutral-200 border rounded-3xl shadow-lg p-4 py-2 mr-44 flex items-center">
-          <span>Loading...</span>
-          <img
-            src={loadingIcon}
-            alt="Loading Icon"
-            className="w-5 h-5 animate-spin ml-7"
-          />
-        </div>
-      )}
+        {loading2 && (
+          <div className="flex flex-col items-end mr-44 mt-4">
+            <div className="text-white font-semibold text-[13px] bg-neutral-200 border rounded-3xl shadow-lg p-4 py-2 flex items-center mt-2 w-fit">
+              <span>Loading...</span>
+              <img
+                src={loadingIcon}
+                alt="Loading Icon"
+                className="w-5 h-5 animate-spin ml-7"
+              />
+            </div>
+          </div>
+        )}
+      </div>
 
       {responses.length > 0 &&
         responses.map((response) => (
           <div
             key={response}
-            className="text-white text-left font-semibold text-[13px] bg-sky-400 border border-gray-300 rounded-3xl shadow-lg p-4 py-2 mr-32 inline-block max-w-xl"
+            className="text-white font-semibold text-[13px] bg-sky-400 border border-gray-300 rounded-3xl shadow-lg p-4 py-2 mr-32 inline-block max-w-[230px]"
           >
             {response}
           </div>
@@ -251,22 +263,24 @@ const Chatbot = () => {
         <InitialChatbot onButtonClick={handleButtonClick2} />
       )}
 
-      <div className="flex mb-8 fixed bottom-5 right-20 ">
-        <input
-          type="text"
-          value={inputMessage}
-          onChange={handleInputChange}
-          placeholder="채팅을 입력하세요."
-          className="flex-1 pl-4 py-2 pr-20 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500"
-        />
-        <button
-          onClick={handleSend}
-          className="absolute top-0 right-0 mt-2 mr-3 text-blue-500 hover:text-blue-700 focus:outline-none"
-          type="button"
-        >
-          보내기
-        </button>
-      </div>
+      {!disable && (
+        <div className="flex mb-8 fixed bottom-5 right-20 ">
+          <input
+            type="text"
+            value={inputMessage}
+            onChange={handleInputChange}
+            placeholder="채팅을 입력하세요."
+            className="flex-1 pl-4 py-2 pr-20 border border-gray-300 rounded-full focus:outline-none focus:border-blue-500"
+          />
+          <button
+            onClick={handleSend}
+            className="absolute top-0 right-0 mt-2 mr-3 text-blue-500 hover:text-blue-700 focus:outline-none"
+            type="button"
+          >
+            보내기
+          </button>
+        </div>
+      )}
     </div>
   );
 };

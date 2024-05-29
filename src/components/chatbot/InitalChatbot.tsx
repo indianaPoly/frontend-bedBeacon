@@ -7,7 +7,7 @@ interface InitialChatbotProps {
 const InitialChatbot: React.FC<InitialChatbotProps> = ({ onButtonClick }) => {
   return (
     <div
-      className="bg-white border border-gray-300 rounded-3xl shadow-lg p-4 mt-8"
+      className="bg-white border border-gray-300 rounded-3xl shadow-lg p-4"
       style={{ backgroundColor: '#F2F2F2' }}
     >
       <div className="mb-4 text-left">
