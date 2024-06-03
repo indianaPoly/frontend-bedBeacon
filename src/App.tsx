@@ -8,6 +8,19 @@ const App = () => {
   useEffect(() => {
     ReactGA.initialize(`${import.meta.env.VITE_GOOGLE_KEY}`);
   }, []);
+
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      e.preventDefault();
+      e.returnValue = '';
+    };
+
+    window.addEventListener('beforeunload', handleBeforeUnload);
+
+    return () => {
+      window.removeEventListener('beforeunload', handleBeforeUnload);
+    };
+  });
   return (
     <BrowserRouter>
       <Router />
