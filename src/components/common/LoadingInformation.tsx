@@ -8,7 +8,7 @@ const LoadingInformation = () => {
     <div className="flex flex-col items-center justify-center gap-[25px] w-[300px] h-auto">
       <div className="w-auto h-auto flex flex-col items-center justify-center">
         <span className=" font-extrabold text-[17px]">TIP!</span>
-        <span className=" font-bold text-[16px] text-[#4095BD]">
+        <span className=" font-bold text-[16px] text-yellow-500">
           {'<'}
           {loadingInformationData[randomNumber].emerTip}
           {'>'}
