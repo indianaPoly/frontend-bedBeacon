@@ -67,7 +67,7 @@ const Result = () => {
         <div className=" w-full flex justify-center items-center gap-[3px]">
           {data && (
             <>
-              <span className="text-[12px] font-bold text-[#4095BD]">
+              <span className="text-[12px] font-bold text-yellow-500">
                 {sessionStorage.getItem('district2') !== ''
                   ? data.getLocation
                   : location}

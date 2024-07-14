@@ -43,7 +43,7 @@ const useGetHospitalDetail = (
 
         if (Array.isArray(hospitalList)) {
           surgeryList = hospitalList.filter(
-            (item) => item.dutyName === hospitalCode
+            (item) => item.dutyName === hospitalDetail.dutyName
           );
         } else if (hospitalList.dutyName === hospitalCode) {
           surgeryList = [hospitalList];

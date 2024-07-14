@@ -5,7 +5,7 @@ const Loading = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-[20px]">
       <div className="flex flex-col justify-center items-center">
-        <span className=" block text-[13px] font-bold text-[#4095BD]">
+        <span className=" block text-[13px] font-bold text-yellow-500">
           데이터를 가져오는 중이에요.
         </span>
       </div>

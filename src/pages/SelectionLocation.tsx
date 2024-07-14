@@ -25,7 +25,7 @@ const SelectionLocation = () => {
 
   return (
     <div className="mx-auto flex flex-col justify-center items-center gap-[20px] mt-[150px]">
-      <span className="text-[13px] font-bold text-[#4095BD]">
+      <span className="text-[13px] font-bold text-yellow-500">
         지역을 선택한 후 확인을 눌러보세요!
       </span>
       <form
@@ -84,7 +84,7 @@ const SelectionLocation = () => {
         </div>
         <div className="flex items-center justify-center">
           <button
-            className="bg-[#4095BD] hover:opacity-75 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
+            className="bg-yellow-500 hover:opacity-75 text-white font-bold py-2 px-4 rounded-xl focus:outline-none focus:shadow-outline"
             type="submit"
           >
             저장

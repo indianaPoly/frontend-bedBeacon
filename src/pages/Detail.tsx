@@ -87,7 +87,7 @@ const Detail = () => {
             <img
               alt="병원 대표 사진"
               src={imageLoader(data.hospitalCode as string)}
-              className=" w-[230px] h-[230px] mobile:w-[250px] mobile:h-[250px] rounded-3xl border-[0.5px] border-[#4095BD]"
+              className=" w-[230px] h-[230px] mobile:w-[250px] mobile:h-[250px] rounded-3xl border-[0.5px]"
             />
             <div className="flex flex-col justify-evenly max-w-[250px]">
               <div className="flex flex-col gap-[5px]">
@@ -126,7 +126,7 @@ const Detail = () => {
                 </div>
                 <div className="flex flex-col gap-[10px]">
                   <button
-                    className="w-[80px] h-[30px] bg-[#4095BD] rounded-xl"
+                    className="w-[80px] h-[30px] bg-yellow-500 rounded-xl"
                     type="button"
                   >
                     <a
@@ -137,7 +137,7 @@ const Detail = () => {
                     </a>
                   </button>
                   <button
-                    className="w-[80px] h-[30px] bg-[#4095BD] rounded-xl"
+                    className="w-[80px] h-[30px] bg-yellow-500 rounded-xl"
                     type="button"
                     onClick={(event) => {
                       event.preventDefault();
@@ -163,7 +163,7 @@ const Detail = () => {
                 }}
                 type="button"
                 className={`text-[16px] font-bold ${
-                  hospitalDataType === 'hospitalRoom' && 'text-[#4095BD]'
+                  hospitalDataType === 'hospitalRoom' && 'text-yellow-500'
                 }`}
               >
                 실시간 병상 정보 확인하기
@@ -176,7 +176,7 @@ const Detail = () => {
                 type="button"
                 className={`text-[16px] font-bold ${
                   hospitalDataType === 'medicalFeasibilityIndex' &&
-                  'text-[#4095BD]'
+                  'text-yellow-500'
                 }`}
               >
                 중증질환자 수용가능 여부
