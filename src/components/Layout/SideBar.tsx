@@ -41,7 +41,7 @@ const SideBar = ({
         <div className="flex flex-col gap-[40px]">
           <button
             type="button"
-            className=" text-[18px] font-bold text-[#4095BD]"
+            className=" text-[18px] font-bold text-yellow-500"
             onClick={(e) => {
               e.preventDefault();
               navigate('/hospitals');
@@ -51,7 +51,7 @@ const SideBar = ({
           </button>
           <button
             type="button"
-            className="text-[18px] font-bold text-[#4095BD]"
+            className="text-[18px] font-bold text-yellow-500"
             onClick={(e) => {
               e.preventDefault();
               sessionStorage.removeItem('latitude');
@@ -63,7 +63,7 @@ const SideBar = ({
           </button>
           <button
             type="button"
-            className="text-[18px] font-bold text-[#4095BD]"
+            className="text-[18px] font-bold text-yellow-500"
             onClick={(e) => {
               e.preventDefault();
               window.open(
