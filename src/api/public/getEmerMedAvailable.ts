@@ -6,7 +6,7 @@ const getEmerMedAvailable = (city: string, district: string) => {
   const stage2 = district;
   const url = `https://apis.data.go.kr/B552657/ErmctInfoInqireService/getSrsillDissAceptncPosblInfoInqire?serviceKey=${
     import.meta.env.VITE_SERVICE_KEY
-  }&STAGE1=${stage1}&STAGE2=${stage2}&pageNo=1&numOfRows=10`;
+  }&STAGE1=${stage1}&STAGE2=${stage2}&pageNo=1&numOfRows=100`;
   const resopnse = axios.get<HospitalEmerMedAvailableData>(url);
   return resopnse;
 };
