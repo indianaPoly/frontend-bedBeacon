@@ -6,14 +6,12 @@ import Loading from './common/Loading';
 import List from '../components/List/List';
 import Layout from '../components/Layout/Layout';
 import ErrorPage from './common/ErrorPage';
-import PageViewTrigger from '../util/gtag';
 
 const Result = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
     document.title = '주변 병원 페이지';
-    PageViewTrigger();
   }, []);
 
   useEffect(() => {
