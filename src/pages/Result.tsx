@@ -1,8 +1,6 @@
-import { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import Loading from './common/Loading';
+import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Layout from '../components/Layout/Layout';
-import ErrorPage from './common/ErrorPage';
 
 const Result = () => {
   const navigate = useNavigate();
