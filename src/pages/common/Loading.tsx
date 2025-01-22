@@ -1,5 +1,4 @@
 import { ClipLoader } from 'react-spinners';
-import LoadingInformation from '../../components/common/LoadingInformation';
 
 const Loading = () => {
   return (
@@ -11,8 +10,6 @@ const Loading = () => {
       </div>
 
       <ClipLoader color="#4095BD" size="35px" />
-
-      <LoadingInformation />
     </div>
   );
 };
