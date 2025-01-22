@@ -1,8 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import imageLoader from '../util/imageLoader';
-import chatbotIcon from '../assets/chatbot/chatbot.png';
-import Chatbot from '../components/chatbot/Chatbot';
 import useGetHospitalsAround from '../hooks/useGetHospitalsAround';
 import Loading from './common/Loading';
 import List from '../components/List/List';
@@ -11,8 +9,6 @@ import ErrorPage from './common/ErrorPage';
 import PageViewTrigger from '../util/gtag';
 
 const Result = () => {
-  const [showChatbot, setShowChatbot] = useState(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,35 +30,12 @@ const Result = () => {
     sessionStorage.getItem('longitude') as string
   );
 
-  const onClickChatbot = () => {
-    setShowChatbot((prevState) => !prevState);
-  };
-
   const location = `${sessionStorage.getItem('city')} ${sessionStorage.getItem(
     'district'
   )}`;
 
   return (
     <Layout>
-      <div className="desktop:w-[900px] gap-[15px] flex flex-col relative">
-        <button
-          className="fixed bottom-4 right-4 w-12 h-12 flex justify-center items-center rounded-full cursor-pointer"
-          onClick={onClickChatbot}
-          type="button"
-        >
-          <img
-            src={chatbotIcon}
-            alt="Chatbot Icon"
-            className="w-full h-full icon-click-animation"
-          />
-        </button>
-
-        {showChatbot && (
-          <div className="fixed bottom-20 right-4 bg-white w-64 h-15 border border-gray-300 rounded-md shadow-md p-4">
-            <Chatbot />
-          </div>
-        )}
-      </div>
       <div className="desktop:w-[900px] gap-[15px] flex flex-col items-center">
         <div className=" w-full flex justify-center items-center gap-[3px]">
           {data && (
