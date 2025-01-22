@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import imageLoader from '../util/imageLoader';
 import useGetHospitalsAround from '../hooks/useGetHospitalsAround';
 import Loading from './common/Loading';
 import List from '../components/List/List';
@@ -55,19 +54,7 @@ const Result = () => {
           <div className="grid place-items-center mobile:flex mobile:flex-col deskTop:grid deskTop:grid-cols-2 justify-center items-center gap-[20px]">
             {data.hospitalAruondResponse.data.result.hospitalList.map(
               (item) => (
-                <Link to={`/result/${item.hpid}`} key={item.hpid}>
-                  <List
-                    key={item.hpid}
-                    name={item.dutyName}
-                    emergencyGeneralWard={item.hvec > 0 ? item.hvec : 0}
-                    generalWard={item.hvgc}
-                    distance={item.distance}
-                    location={item.dutyAddr}
-                    callNumber={item.dutyTel1}
-                    hospitalCode={item.hpid}
-                    image={imageLoader(item.hpid)}
-                  />
-                </Link>
+                <Link to={`/result/${item.hpid}`} key={item.hpid} />
               )
             )}
           </div>
