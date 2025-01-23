@@ -61,18 +61,6 @@ const SideBar = ({
           >
             다른 지역 병원보기
           </button>
-          <button
-            type="button"
-            className="text-[18px] font-bold text-yellow-500"
-            onClick={(e) => {
-              e.preventDefault();
-              window.open(
-                'https://docs.google.com/forms/d/e/1FAIpQLSejRophAV5IGnOkzTLMdRLe2wDJ2hdMOmwL3oc6mlFQCWR0ag/viewform?usp=sf_link'
-              );
-            }}
-          >
-            피드백 보내기
-          </button>
         </div>
       </div>
     </div>
